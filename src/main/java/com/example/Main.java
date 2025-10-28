@@ -19,8 +19,15 @@ public class Main {
             "Csomó Imre", 
             "Hatvan", 
             new BigDecimal(397.2)
-            );
-        es.store(newemp);
+        );
+        // es.store(newemp);
+
+        Employee updateemp = new Employee(
+            "Tan Aranka", 
+            "Hatvan", 
+            new BigDecimal(397.2)
+        );
+        // es.update(updateemp, 5);
         
         ArrayList<Employee> empList = es.index();
         empList.forEach((emp) -> {
