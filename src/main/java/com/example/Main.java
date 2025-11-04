@@ -29,7 +29,7 @@ public class Main {
         );
         // es.update(updateemp, 5);
 
-        es.destroy(5);
+        // es.destroy(5);
         
         ArrayList<Employee> empList = es.index();
         empList.forEach((emp) -> {
