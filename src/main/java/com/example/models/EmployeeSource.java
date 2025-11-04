@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class EmployeeSource implements EmployeeAccessible {
+public class EmployeeSource implements Accessible<Employee> {
     Database database;
 
     public EmployeeSource(Database database) {
@@ -92,7 +92,21 @@ public class EmployeeSource implements EmployeeAccessible {
 
     @Override
     public void destroy(int id) {
-
+        try {
+            tryDestroy(id);
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    private void tryDestroy(int id) throws SQLException {
+        Connection conn = database.connect();
+        String sql = "delete from employees where id=?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, id);
+        ps.executeUpdate();
+        conn.close();
+        // database.close(conn);
     }
     
 }

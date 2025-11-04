@@ -28,10 +28,17 @@ public class Main {
             new BigDecimal(397.2)
         );
         // es.update(updateemp, 5);
+
+        es.destroy(5);
         
         ArrayList<Employee> empList = es.index();
         empList.forEach((emp) -> {
-            System.out.println(emp.getName());
+            System.out.printf(
+                "%d %s %s\n",
+                emp.getId(),
+                emp.getName(),
+                emp.getCity()
+                );
         });
     }
 }
